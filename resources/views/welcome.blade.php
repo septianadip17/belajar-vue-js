@@ -12,6 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
         *,
@@ -828,7 +829,8 @@
 
 <body class="antialiased">
     <div id="app">
-        <example-component></example-component>
+        <!-- {{-- <example-component></example-component> --}} -->
+        <to-do></to-do>
     </div>
     <script src="{{mix('js/app.js')}}" type="text/javascript"></script>
 </body>

@@ -5,7 +5,9 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+import {
+    createApp
+} from 'vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -14,6 +16,9 @@ import { createApp } from 'vue';
  */
 
 const app = createApp({});
+
+import ToDoComponent from './components/ToDoComponent.vue';
+app.component('to-do', ToDoComponent);
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
