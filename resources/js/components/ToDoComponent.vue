@@ -1,50 +1,35 @@
 <template>
     <div class="container">
         <h1 class="title">To-Do</h1>
-        <form class="form">
-            <input type="text" v-model="input">
-            <button type="button" @click="addList">Submit</button>
-        </form>
-        <ul class="list">
-            <li v-for="(item, index) in list" :key="index">
-            {{ item.title }} <span class="delete" @click="deleteList(index)">Hapus </span>
-            </li>
-        </ul>
+        <input-form @emit-submit="addList" />
+        <list :listdata="list" @emit-delete="deleteList" />
     </div>
 </template>
 
 <script>
-export  default{
-    data:function() {
-        return{
+export default {
+    data: function () {
+        return {
             list: [
-                {
-                    title: "menyapu"
-},
-                {
-                    title: "cuci piring"
-                },
-                {
-                    title: "pel"
-                },
+                { title: "menyapu", status: false },
+                { title: "cuci piring", status: false },
+                { title: "pel", status: false },
             ],
-            input : " "
+        };
+    },
+    methods: {
+        addList(datainput) {
+            let newList = {
+                title: datainput
+            }
+            this.list.push(newList)
+        },
+        deleteList(index) {
+            this.list.splice(index, 1)
         }
     },
     mounted() {
-        console.log( 'Component mounted.' )
-    },
-    methods: {
-        addList(){
-            let newList = {
-                title : this.input
-            }
-            this.list.push(newList)
-            this.input = null;
-        },
-        deleteList(index){
-            this.list.splice(index, 1)
-        }
+        console.log('Component mounted.')
     },
 
 }
