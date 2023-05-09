@@ -7,25 +7,30 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     data: function () {
         return {
-            list: [
-                { title: "menyapu", status: false },
-                { title: "cuci piring", status: false },
-                { title: "pel", status: false },
-            ],
+
         };
+    },
+    computed: {
+        ...mapGetters({
+            list: 'getToDo'
+        })
     },
     methods: {
         addList(datainput) {
             let newList = {
                 title: datainput
             }
-            this.list.push(newList)
+            // this.list.push(newList)
+            this.$store.dispatch('addList', newList)
         },
         deleteList(index) {
-            this.list.splice(index, 1)
+            // this.list.splice(index, 1)
+            this.$store.commit('DELETE_TODO', index)
         }
     },
     mounted() {

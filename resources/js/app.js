@@ -4,10 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import {
-    createApp
-} from 'vue';
+import "./bootstrap";
+import { createApp } from "vue";
+import store from "./store";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,21 +16,20 @@ import {
 
 const app = createApp({});
 
+import ExampleComponent from "./components/ExampleComponent.vue";
+app.component("example-component", ExampleComponent);
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import ToDoComponent from "./components/ToDoComponent.vue";
+app.component("to-do", ToDoComponent);
 
-import ToDoComponent from './components/ToDoComponent.vue';
-app.component('to-do', ToDoComponent);
+import InputFormComponent from "./components/InputFormComponent.vue";
+app.component("input-form", InputFormComponent);
 
-import InputFormComponent from './components/InputFormComponent.vue';
-app.component('input-form', InputFormComponent);
+import ListComponent from "./components/ListComponent.vue";
+app.component("list", ListComponent);
 
-import ListComponent from './components/ListComponent.vue';
-app.component('list', ListComponent);
-
-import ButtonComponent from './components/ButtonComponent.vue';
-app.component('button-form', ButtonComponent);
+import ButtonComponent from "./components/ButtonComponent.vue";
+app.component("button-form", ButtonComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -51,4 +49,5 @@ app.component('button-form', ButtonComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+// app.mount("#app");
+app.use(store).mount("#app");
